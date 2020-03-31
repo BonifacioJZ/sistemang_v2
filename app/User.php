@@ -16,9 +16,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+
 
     /**
      * The attributes that should be hidden for arrays.
@@ -40,6 +38,6 @@ class User extends Authenticatable
 
     public function role()
     {
-        return $this->belongsTo(Role::class);
+        return $this->belongsTo('App\Role');
     }
 }

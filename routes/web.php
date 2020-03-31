@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Role;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
+
+
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('home');
+})->name('home');
+Route::get('/login', function () {
+    return view('login.login');
+})->name('login');
+
+Route::get('Cita/create', ['as' => 'cita.create', 'uses' => 'CitaController@create']);
+Route::post('cita', ['as' => 'cita.create', 'uses' => 'CitaController@store']);
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
