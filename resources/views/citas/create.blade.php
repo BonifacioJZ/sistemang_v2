@@ -9,7 +9,7 @@
                 <div class="card-header">{{ __('Citas') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('cita.create') }}">
+                    <form method="POST" action="{{ route('cita.store') }}">
                         @csrf
 
                         <div class="form-group row">

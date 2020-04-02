@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Lista;
 
 class ListController extends Controller
 {
@@ -11,9 +12,15 @@ class ListController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
-        //
+        $listas = Lista::all();
+        return view('home', compact('listas'));
     }
 
     /**
@@ -23,7 +30,6 @@ class ListController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -34,7 +40,14 @@ class ListController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => ['required', 'string', 'min:1', 'max:100'],
+        ]);
+        Lista::Create([
+            'name' => $request['name']
+        ]);
+
+        return redirect()->route('home');
     }
 
     /**
@@ -79,6 +92,7 @@ class ListController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Lista::findOrFail($id)->delete();
+        return redirect()->route('home');
     }
 }
