@@ -38,6 +38,9 @@
                     <li class="nav-item">
                         <a class="nav-link {{ setActive('cita.index') }}" href="{{ route('cita.index') }}" >Citas</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ setActive('patient.index') }}" href="{{ route('patient.index') }}" >Paciente</a>
+                    </li>
                     @endauth
                     @guest
                     <li class="nav-item">

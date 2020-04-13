@@ -22,7 +22,7 @@ Route::get('/login', function () {
     return view('login.login');
 })->name('login');
 
-
+//Rol General
 Route::get('cita/{id}', ['as' => 'cita.show', 'uses' => 'CitaController@show']);
 Route::get('cita', ['as' => 'cita.index', 'uses' => 'CitaController@index']);
 Route::get('Cita/create', ['as' => 'cita.create', 'uses' => 'CitaController@create']);
@@ -33,6 +33,13 @@ Route::get('cita/confirm/{id}', ['as' => 'cita.confirm', 'uses' => 'CitaControll
 Route::delete('cita/{id}', ['as' => 'cita.destroy', 'uses' => 'CitaController@destroy']);
 Route::Post('list', ['as' => 'list.store', 'uses' => 'ListController@store']);
 Route::delete('list/{id}', ['as' => 'list.destrpyer', 'uses' => 'ListController@destroy']);
+
+//Rol Medic
+Route::get('paciente/create', ['as' => 'patient.create', 'uses' => 'PatientController@create']);
+Route::get('paciente', ['as' => 'patient.index', 'uses' => 'PatientController@index']);
+Route::get('paciente/{id}', ['as' => 'patient.show', 'uses' => 'PatientController@show']);
+Route::post('paciente', ['as' => 'patient.store', 'uses' => 'PatientController@store']);
+
 
 Auth::routes();
 
