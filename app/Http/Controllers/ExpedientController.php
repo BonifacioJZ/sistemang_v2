@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use App\Expedient;
 
 class ExpedientController extends Controller
 {
@@ -11,9 +13,10 @@ class ExpedientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($user_id)
     {
-        //
+        $expedientes = Expedient::where(["user_id" => $user_id])->get();
+        return view('expedients.index', compact('user_id', 'expedientes'));
     }
 
     /**
@@ -21,9 +24,9 @@ class ExpedientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        return view('expedients.create', compact('id'));
     }
 
     /**
@@ -34,7 +37,29 @@ class ExpedientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'pulso' => ['required', 'string', 'min:1', 'max:3'],
+            'respiracion' => ['required', 'string', 'min:1', 'max:3'],
+            'temperatura' => ['required', 'string', 'min:1', 'max:3'],
+            'presion_d' => ['required', 'string', 'min:1', 'max:3'],
+            'presion_s' => ['required', 'string', 'min:1', 'max:3'],
+
+        ]);
+        $fecha = Carbon::now();
+        $hora = $fecha->hour . ":" . $fecha->minute;
+        Expedient::create([
+            'pulso' => $request['pulso'],
+            'respiracion' => $request['respiracion'],
+            'temperatura' => $request['temperatura'],
+            'presion_d' => $request['presion_d'],
+            'presion_s' => $request['presion_s'],
+            'patient_id' => $request['patient_id'],
+            'user_id' => $request['id'],
+            'date' => $fecha,
+            'time' => $hora
+        ]);
+
+        return redirect()->route('expedient.index', $request['patient_id']);
     }
 
     /**

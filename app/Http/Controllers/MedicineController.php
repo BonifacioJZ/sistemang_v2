@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Medicine;
 
-class MedicinesController extends Controller
+class MedicineController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,8 @@ class MedicinesController extends Controller
      */
     public function index()
     {
-        //
+        $medicinas = Medicine::where("disponible", "=", 1)->get();
+        return view('medicines.index', compact('medicinas'));
     }
 
     /**
@@ -23,7 +25,7 @@ class MedicinesController extends Controller
      */
     public function create()
     {
-        //
+        return view('medicines.create');
     }
 
     /**
@@ -34,7 +36,19 @@ class MedicinesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nombre' => ['required', 'string', 'min:1', 'max:500'],
+            'dosis' => ['required', 'string', 'min:1', 'max:100000'],
+            'laboratorio' => ['required', 'min:1', 'max:150', 'string'],
+            'description' => ['required', 'min:1', 'max:150', 'string'],
+        ]);
+        Medicine::create([
+            'nombre' => $request['nombre'],
+            'dosis' => $request['dosis'],
+            'laboratorio' => $request['laboratorio'],
+            'description' => $request['description']
+        ]);
+        return  redirect()->route('medicine.index');;
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Patient;
+use Carbon\Carbon;
 
 class PatientController extends Controller
 {
@@ -67,7 +68,8 @@ class PatientController extends Controller
     public function show($id)
     {
         $paciente = Patient::find($id);
-        return view('patients.show', compact('paciente'));
+        $edad = Carbon::parse($paciente->fecha_de_nacimiento)->age;
+        return view('patients.show', compact('paciente', 'edad'));
     }
 
     /**
@@ -78,7 +80,8 @@ class PatientController extends Controller
      */
     public function edit($id)
     {
-        //
+        $paciente = Patient::find($id);
+        return view('patients.update',compact('paciente'));
     }
 
     /**
@@ -90,7 +93,27 @@ class PatientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => ['required', 'string', 'max:100'],
+            'last_name' => ['required', 'string', 'max:150'],
+            'telefono' => ['max:14', 'string'],
+            'colonia' => ['required', 'string'],
+            'ciudad' => ['string'],
+            'curp' => ['required', 'max:18', 'string'],
+            'fecha_de_nacimiento' => ['required', 'date']
+        ]);
+        Patient::findOrFail($id)->update([
+            'name' => $request['name'],
+            'last_name' => $request['last_name'],
+            'telefono' => $request['telefono'],
+            'colonia' => $request['colonia'],
+            'ciudad' => $request['ciudad'],
+            'curp' => $request['curp'],
+            'fecha_de_nacimiento' => $request['fecha_de_nacimiento'],
+        ]);
+
+        $paciente=Patient::find($id);
+        return view('patients.update',compact('paciente'));
     }
 
     /**

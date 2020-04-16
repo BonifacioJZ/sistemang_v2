@@ -35,12 +35,21 @@ Route::Post('list', ['as' => 'list.store', 'uses' => 'ListController@store']);
 Route::delete('list/{id}', ['as' => 'list.destrpyer', 'uses' => 'ListController@destroy']);
 
 //Rol Medic
+//Pacientes
 Route::get('paciente/create', ['as' => 'patient.create', 'uses' => 'PatientController@create']);
 Route::get('paciente', ['as' => 'patient.index', 'uses' => 'PatientController@index']);
 Route::get('paciente/{id}', ['as' => 'patient.show', 'uses' => 'PatientController@show']);
 Route::post('paciente', ['as' => 'patient.store', 'uses' => 'PatientController@store']);
-
-
+Route::get('paciente/{id}/edit', ['as' => 'patient.edit', 'uses' => 'PatientController@edit']);
+Route::put('paciente/{id}', ['as' => 'patient.update', 'uses' => 'PatientController@update']);
+//Expedientes
+Route::get('expedient/{user_id}', ['as' => 'expedient.index', 'uses' => 'ExpedientController@index']);
+Route::get('expedient/create/{user_id}', ['as' => 'expedient.create', 'uses' => 'ExpedientController@create']);
+Route::post('expedient/', ['as' => 'expedient.store', 'uses' => 'ExpedientController@store']);
+//medicinas
+Route::get('medicina', ['as' => 'medicine.index', 'uses' => 'MedicineController@index']);
+Route::get('medicina/create', ['as' => 'medicine.create', 'uses' => 'MedicineController@create']);
+Route::post('medicina', ['as' => 'medicine.store', 'uses' => 'MedicineController@store']);
 Auth::routes();
 
 Route::get('/home', ['as' => 'home', 'uses' => 'ListController@index']);

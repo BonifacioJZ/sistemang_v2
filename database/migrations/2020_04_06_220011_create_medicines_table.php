@@ -19,6 +19,7 @@ class CreateMedicinesTable extends Migration
             $table->text('dosis');
             $table->string('laboratorio');
             $table->text('description');
+            $table->boolean('disponible')->default(true);
             $table->timestamps();
         });
     }

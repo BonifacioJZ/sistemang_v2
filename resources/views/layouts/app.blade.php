@@ -36,10 +36,13 @@
                         <a class="nav-link {{ setActive('home')}} " href="{{route('home')}}">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ setActive('cita.index') }}" href="{{ route('cita.index') }}" >Citas</a>
+                        <a class="nav-link {{ setActive('cita.index') }}" href="{{ route('cita.index') }}" >{{ __("Citas") }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ setActive('patient.index') }}" href="{{ route('patient.index') }}" >Paciente</a>
+                        <a class="nav-link {{ setActive('medicine.index') }}" href="{{ route('medicine.index') }}" >{{ __("Medicinas") }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ setActive('patient.index') }}" href="{{ route('patient.index') }}" >{{ __("Pacientes") }}</a>
                     </li>
                     @endauth
                     @guest

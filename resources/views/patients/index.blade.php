@@ -29,6 +29,7 @@
                 <td>{{ $pacientes->curp }}</td>
                 <td> <div class="btn-group" >
                     <a href="{{ route('patient.show',$pacientes->id) }}" class="btn btn-primary btn-sm">Ver Paciente</a>
+                    <a href="{{ route('patient.edit',$pacientes->id) }}" class="btn btn-warning btn-sm">Actualizar</a>
                 </div></td>
             </tbody>
         @endforeach
