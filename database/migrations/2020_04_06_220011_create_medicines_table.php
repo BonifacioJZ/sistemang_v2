@@ -17,6 +17,8 @@ class CreateMedicinesTable extends Migration
             $table->id();
             $table->string('nombre');
             $table->text('dosis');
+            $table->string('codigo')->unique();
+            $table->string('formula');
             $table->string('laboratorio');
             $table->text('description');
             $table->boolean('disponible')->default(true);

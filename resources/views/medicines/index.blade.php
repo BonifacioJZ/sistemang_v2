@@ -14,20 +14,18 @@
       <table class="table">
         <thead>
             <tr>
+              <th scope="col" >Codigo</th>
               <th scope="col" >Nombre</th>
-              <th scope="col" >Descripcion</th>
-              <th scope="col" >Dosis</th>
               <th scope="col"> Acciones </th>
             </tr>
         </thead>
         @foreach($medicinas as $medicina)
             <tbody>
+                <td> {{ $medicina->codigo }}</td>
                 <td>{{ $medicina->nombre }}</td>
-                <td>{{ $medicina->description }}</td>
-                <td>{{ $medicina->dosis }}</td>
+               
                 <td> <div class="btn-group" >
-                    <a href="#" class="btn btn-primary btn-sm">Ver Medicina</a>
-                    <a href="#" class="btn btn-warning btn-sm">Actualizar</a>
+                    <a href="{{  route('medicine.show',$medicina->id) }}" class="btn btn-primary btn-sm">Ver Medicina</a>
                     <a href="#" class="btn btn-danger btn-sm">Eliminar</a>
                 </div></td>
             </tbody>

@@ -8,6 +8,8 @@ class Medicine extends Model
 {
     protected $fillable = [
         'nombre',
+        'codigo',
+        'formula',
         'dosis',
         'laboratorio',
         'description',

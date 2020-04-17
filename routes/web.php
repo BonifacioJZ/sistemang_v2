@@ -50,6 +50,9 @@ Route::post('expedient/', ['as' => 'expedient.store', 'uses' => 'ExpedientContro
 Route::get('medicina', ['as' => 'medicine.index', 'uses' => 'MedicineController@index']);
 Route::get('medicina/create', ['as' => 'medicine.create', 'uses' => 'MedicineController@create']);
 Route::post('medicina', ['as' => 'medicine.store', 'uses' => 'MedicineController@store']);
+Route::get('medicina/{id}', ['as' => 'medicine.show', 'uses' => 'MedicineController@show']);
+Route::get('medicina/{id}/edit', ['as' => 'medicine.edit', 'uses' => 'MedicineController@edit']);
+
 Auth::routes();
 
 Route::get('/home', ['as' => 'home', 'uses' => 'ListController@index']);

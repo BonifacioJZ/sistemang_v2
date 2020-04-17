@@ -7,6 +7,10 @@ use App\Medicine;
 
 class MedicineController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +18,7 @@ class MedicineController extends Controller
      */
     public function index()
     {
-        $medicinas = Medicine::where("disponible", "=", 1)->get();
+        $medicinas = Medicine::all();
         return view('medicines.index', compact('medicinas'));
     }
 
@@ -39,12 +43,16 @@ class MedicineController extends Controller
         $this->validate($request, [
             'nombre' => ['required', 'string', 'min:1', 'max:500'],
             'dosis' => ['required', 'string', 'min:1', 'max:100000'],
+            'codigo' => ['required', 'string', 'min:1', 'max:150', 'unique:medicines'],
+            'formula' => ['required', 'string', 'min:1', 'max:300'],
             'laboratorio' => ['required', 'min:1', 'max:150', 'string'],
             'description' => ['required', 'min:1', 'max:150', 'string'],
         ]);
         Medicine::create([
             'nombre' => $request['nombre'],
             'dosis' => $request['dosis'],
+            'codigo' => $request['codigo'],
+            'formula' => $request['formula'],
             'laboratorio' => $request['laboratorio'],
             'description' => $request['description']
         ]);
@@ -59,7 +67,8 @@ class MedicineController extends Controller
      */
     public function show($id)
     {
-        //
+        $medicina = Medicine::find($id);
+        return view('medicines.show', compact('medicina'));
     }
 
     /**
@@ -70,7 +79,8 @@ class MedicineController extends Controller
      */
     public function edit($id)
     {
-        //
+        $medicine = Medicine::find($id);
+        return view('medicines.edit', compact('medicine'));
     }
 
     /**
