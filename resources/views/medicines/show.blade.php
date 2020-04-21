@@ -16,7 +16,20 @@
                 <dd class="col-sm-9" >{{__($medicina->description)}}</dd>
                 <dt class="col-sm-3" >Formula</dt>
                 <dd class="col-sm-9" >{{ __($medicina->formula) }}</dd>
-            </dl>
+                <dt class="col-sm-3">Disponible</dt>
+                <dd class="col-sm-9" >
+                    @if($medicina->disponible)
+                        <div class="alert alert-success" role="alert">
+                            Disponible
+                        </div>
+                    @else
+                        <div class="alert alert-success" role="alert">
+                            No Disponible
+                        </div>
+                    @endif
+                </dd>
+               </dl>
+               <a href="{{ route('medicine.edit',$medicina->id) }}" class="btn btn-primary">Editar</a>
         </div>
     </div>
     </div>

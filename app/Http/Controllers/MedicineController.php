@@ -56,7 +56,7 @@ class MedicineController extends Controller
             'laboratorio' => $request['laboratorio'],
             'description' => $request['description']
         ]);
-        return  redirect()->route('medicine.index');;
+        return  redirect()->route('medicine.index');
     }
 
     /**
@@ -92,7 +92,24 @@ class MedicineController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'nombre' => ['required', 'string', 'min:1', 'max:500'],
+            'dosis' => ['required', 'string', 'min:1', 'max:100000'],
+            'codigo' => ['required', 'string', 'min:1', 'max:150'],
+            'formula' => ['required', 'string', 'min:1', 'max:300'],
+            'laboratorio' => ['required', 'min:1', 'max:150', 'string'],
+            'description' => ['required', 'min:1', 'max:150', 'string'],
+        ]);
+        Medicine::findOrFail($id)->update([
+            'nombre' => $request['nombre'],
+            'dosis' => $request['dosis'],
+            'codigo' => $request['codigo'],
+            'formula' => $request['formula'],
+            'laboratorio' => $request['laboratorio'],
+            'description' => $request['description']
+
+        ]);
+        return   redirect()->route('medicine.show',$id);
     }
 
     /**
