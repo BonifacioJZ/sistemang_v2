@@ -109,7 +109,18 @@ class MedicineController extends Controller
             'description' => $request['description']
 
         ]);
-        return   redirect()->route('medicine.show',$id);
+        return   redirect()->route('medicine.show', $id);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function confirmacion($id)
+    {
+        return view('medicines.confirm', compact('id'));
     }
 
     /**
@@ -120,6 +131,7 @@ class MedicineController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Medicine::findOrFail($id)->delete();
+        return redirect()->route('medicine.index');
     }
 }

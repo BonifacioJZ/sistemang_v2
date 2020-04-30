@@ -52,8 +52,9 @@ Route::get('medicina/create', ['as' => 'medicine.create', 'uses' => 'MedicineCon
 Route::post('medicina', ['as' => 'medicine.store', 'uses' => 'MedicineController@store']);
 Route::get('medicina/{id}', ['as' => 'medicine.show', 'uses' => 'MedicineController@show']);
 Route::get('medicina/{id}/edit', ['as' => 'medicine.edit', 'uses' => 'MedicineController@edit']);
-Route::put('medicina/{id}',['as'=>'medicine.update','uses'=>'MedicineController@update']);
-
+Route::put('medicina/{id}', ['as' => 'medicine.update', 'uses' => 'MedicineController@update']);
+Route::get('medicina/{id}/confirmacion', ['as' => 'medicine.confirm', 'uses' => 'MedicineController@confirmacion']);
+Route::delete('medicina/{id}', ['as' => 'medicine.destroy', 'uses' => 'MedicineController@destroy']);
 Auth::routes();
 
 Route::get('/home', ['as' => 'home', 'uses' => 'ListController@index']);

@@ -23,10 +23,10 @@
             <tbody>
                 <td> {{ $medicina->codigo }}</td>
                 <td>{{ $medicina->nombre }}</td>
-               
+
                 <td> <div class="btn-group" >
                     <a href="{{  route('medicine.show',$medicina->id) }}" class="btn btn-primary btn-sm">Ver Medicina</a>
-                    <a href="#" class="btn btn-danger btn-sm">Eliminar</a>
+                    <a href="{{  route('medicine.confirm',$medicina->id)}}" class="btn btn-danger btn-sm">Eliminar</a>
                 </div></td>
             </tbody>
         @endforeach
