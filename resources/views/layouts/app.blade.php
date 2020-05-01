@@ -44,7 +44,7 @@
 </head>
 
 <body>
-        <div class="ui attached  menu">
+        <div class="ui attached stackable  menu">
            <div class="ui container">
             @guest
             <a class="item {{ setActive('login') }}" href="{{ route('login') }}">
@@ -61,7 +61,7 @@
                 <a class="item {{ setActive('patient.index') }}" href="{{ route('patient.index') }}">Paciente</a>
                 <div class="right menu">
                     <a class="ui item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        {{ __('Cerrar Sesion') }}
+                        {{ __('Salir') }}
                     </a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
