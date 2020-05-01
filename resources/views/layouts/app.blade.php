@@ -26,10 +26,26 @@
     <link href="{{ asset('css/semantic.min.css') }}" rel="stylesheet">
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <style>
+
+
+      body > .grid {
+        height: 100%;
+      }
+      .image {
+        margin-top: -100px;
+      }
+      .column {
+        max-width: 450px;
+      }
+
+    </style>
 </head>
 
 <body>
-        <div class="ui pointing menu">
+        <div class="ui attached  menu">
+           <div class="ui container">
             @guest
             <a class="item {{ setActive('login') }}" href="{{ route('login') }}">
                 Inicio de Sesion
@@ -44,14 +60,18 @@
                 <a class="item {{ setActive('medicine.index') }}" href="{{ route('medicine.index') }}">Medicina</a>
                 <a class="item {{ setActive('patient.index') }}" href="{{ route('patient.index') }}">Paciente</a>
                 <div class="right menu">
-                    <a class="ui item">
-                        Logout
+                    <a class="ui item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        {{ __('Cerrar Sesion') }}
                     </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </div>
             @endauth
+           </div>
 
         </div>
-        <main class="py-4">
+        <main class="py-4 ui segment">
             @yield('content')
         </main>
     </div>

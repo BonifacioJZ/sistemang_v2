@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="ui middle aligned center aligned grid container segment">
+<div class="ui middle aligned center aligned grid ">
     <div class="column">
         <h2 class="ui blue header">
             <div class="content">
@@ -38,14 +38,14 @@
                         <input type="text" name="email" value="{{ old('email') }}" placeholder="Correo Electronico">
                     </div>
                 </div>
-                <div class="field @error('password') @enderror">
+                <div class="field @error('password') error @enderror">
                     <label>{{ __('Contraseña') }}</label>
                     <div class="ui left icon input">
                         <input type="password" name="password" placeholder="Contraseña">
                     </div>
 
                 </div>
-                <div class="field @error('password-confirm') @enderror">
+                <div class="field @error('password-confirm') error @enderror">
                     <label>{{ __('Confirmar Contraseña') }}</label>
                     <div class="ui left icon input">
                         <input type="password" name="password-confirm" placeholder="Contraseña">
