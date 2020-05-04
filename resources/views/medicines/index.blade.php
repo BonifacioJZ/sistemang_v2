@@ -4,34 +4,46 @@
     <div class="row-cols-md-6">
         <div>
             <div class="btn-group" >
-                <a href="{{ route('medicine.create') }}" class="btn btn-success">Crear Medicina</a>
+                <a href="{{ route('medicine.create') }}" class="ui button green ">Registrar Medicina</a>
             </div>
         </div>
     </div>
     <br>
 
     <div class="justify-content-center">
-      <table class="table">
-        <thead>
-            <tr>
-              <th scope="col" >Codigo</th>
-              <th scope="col" >Nombre</th>
-              <th scope="col"> Acciones </th>
+        <table class="ui celled table">
+            <thead>
+              <tr>
+                <th>Codigo</th>
+                <th>Nombre</th>
+                <th>Disponible</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            @foreach($medicinas as $medicina)
+                <tr>
+                    <td>{{ $medicina->codigo }}</td>
+
+                    <td>{{ $medicina->nombre }}</td>
+
+                @if($medicina->disponible)
+                    <td class="positive"> Disponible</td>
+
+                @else
+
+                    <td class="negative">No  Disponible</td>
+
+                @endif
+                <th>
+                    <div class="ui buttons">
+                        <a href="{{ route('medicine.show',$medicina->id) }}" class="ui positive button">Ver Cita</a>
+                        <div class="or" data-text="o"></div>
+                        <a href="{{ route('medicine.confirm',$medicina->id) }}" class="ui red button">Eliminar</a>
+                      </div>
+                </th>
             </tr>
-        </thead>
-        @foreach($medicinas as $medicina)
-            <tbody>
-                <td> {{ $medicina->codigo }}</td>
-                <td>{{ $medicina->nombre }}</td>
-
-                <td> <div class="btn-group" >
-                    <a href="{{  route('medicine.show',$medicina->id) }}" class="btn btn-primary btn-sm">Ver Medicina</a>
-                    <a href="{{  route('medicine.confirm',$medicina->id)}}" class="btn btn-danger btn-sm">Eliminar</a>
-                </div></td>
-            </tbody>
-        @endforeach
-
-      </table>
+            @endforeach
+          </table>
 
     </div>
     </div>

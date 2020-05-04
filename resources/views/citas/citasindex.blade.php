@@ -6,7 +6,7 @@
     <div class="row-cols-md-6">
         <div>
             <div class="btn-group" >
-                <a href="{{ route('cita.create') }}" class="ui button green ">Crear Cita</a>
+                <a href="{{ route('cita.create') }}" class="ui button green ">Registrar Cita</a>
             </div>
         </div>
     </div>
@@ -33,9 +33,9 @@
                             <th>{{ $cita->hora_de_inicio }}</th>
                             <th>
                                 <div class="ui buttons">
-                                    <a class="ui positive button">Ver Cita</a>
+                                    <a href="{{ route('cita.show',$cita->id) }}" class="ui positive button">Ver Cita</a>
                                     <div class="or" data-text="o"></div>
-                                    <a class="ui red button">Eliminar</a>
+                                    <a href="{{ route('cita.confirm',$cita->id) }}" class="ui red button">Eliminar</a>
                                   </div>
                             </th>
 

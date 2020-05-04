@@ -15,6 +15,7 @@
     <script src="{{ asset('js/jquery.min.js') }}" defer></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/semantic.min.js') }}" defer></script>
+    <script src="{{ asset('js/all.js') }}" defer></script>
 
 
 
@@ -24,7 +25,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/semantic.min.css') }}" rel="stylesheet">
-
+    <link href="{{ asset('css/all.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <style>
