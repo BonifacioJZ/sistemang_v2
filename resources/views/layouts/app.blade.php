@@ -29,7 +29,12 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <style>
-
+      body {
+            background-color: #DADADA;
+        }
+        segment{
+            background-color:#DADADA;
+        }
 
       body > .grid {
         height: 100%;
@@ -72,8 +77,9 @@
            </div>
 
         </div>
-        <main class="py-4 ui segment">
-            @yield('content')
+        <main class="py-4 ui container">
+                @yield('content')
+            
         </main>
     </div>
 </body>

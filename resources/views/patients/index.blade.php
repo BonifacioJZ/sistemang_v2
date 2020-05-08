@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="container" >
+<div class="ui segment" >
     <div class="row-cols-md-6">
         <div>
             <div class="btn-group" >

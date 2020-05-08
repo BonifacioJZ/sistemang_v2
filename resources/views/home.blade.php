@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="ui segment">
     <div class="row justify-content-center">
         <form class="ui form @if($errors->any()) error @endif" method="POST" action="{{ route('list.store') }}">
              @csrf

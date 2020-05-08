@@ -20,8 +20,8 @@ class CreateExpedientsTable extends Migration
             $table->string('temperatura', 100);
             $table->string('presion_d', 100);
             $table->string('presion_s', 100);
-            $table->integer('patient_id');
-            $table->integer('user_id');
+            $table->integer('patient_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->nullable()->constrained()->onDelete('set null');
             $table->date('date');
             $table->time('time');
             $table->timestamps();

@@ -19,8 +19,8 @@ class CreateNotesTable extends Migration
             $table->text('nota');
             $table->date('date');
             $table->time('hora');
-            $table->integer('expedient_id');
-            $table->integer('user_id');
+            $table->foreignId('expedient_id')->constrained()->onDelete('cascade');
+            $table->integer('user_id')->nullable()->constrained()->onDelete('set null');
             $table->timestamps();
         });
     }

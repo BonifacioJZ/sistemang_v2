@@ -21,7 +21,9 @@ class CreateCitasTable extends Migration
             $table->time('hora_de_inicio');
             $table->time('hora_de_finalizacion');
             $table->boolean('status');
-            $table->integer('user_id');
+            $table->foreignId('user_id')->nullable()
+                ->constrained()
+                ->onDelete('set null');
             $table->timestamps();
         });
     }

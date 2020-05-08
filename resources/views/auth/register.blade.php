@@ -18,12 +18,6 @@
                         <input type="text" name="name" value="{{ old('name') }}" placeholder="Nombre">
                     </div>
                 </div>
-                <div class="field @error('username') error @enderror">
-                    <label>{{ __('Nombre de Usuario') }}</label>
-                    <div class="ui left icon input">
-                        <input type="text" name="username" value="{{ old('username') }}" placeholder="Nombre de Ususario">
-                    </div>
-                </div>
                 <div class="field @error('last_name') error @enderror">
                     <label>{{ __('Aapellido') }}</label>
                     <div class="ui left icon input">
@@ -48,7 +42,7 @@
                 <div class="field @error('password-confirm') error @enderror">
                     <label>{{ __('Confirmar Contraseña') }}</label>
                     <div class="ui left icon input">
-                        <input type="password" name="password-confirm" placeholder="Contraseña">
+                        <input type="password" name="password_confirmation" placeholder="Contraseña">
                     </div>
 
                 </div>
