@@ -36,7 +36,7 @@
                 @endif
                 <th>
                     <div class="ui buttons">
-                        <a href="{{ route('medicine.show',$medicina->id) }}" class="ui positive button">Ver Cita</a>
+                        <a href="{{ route('medicine.show',$medicina->id) }}" class="ui positive button">Ver Medicina</a>
                         <div class="or" data-text="o"></div>
                         <a href="{{ route('medicine.confirm',$medicina->id) }}" class="ui red button">Eliminar</a>
                       </div>
