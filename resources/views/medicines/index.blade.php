@@ -44,6 +44,7 @@
             </tr>
             @endforeach
           </table>
+          {{ $medicinas->links() }}
 
     </div>
     </div>

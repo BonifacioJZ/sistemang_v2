@@ -22,7 +22,7 @@ class CitaController extends Controller
      */
     public function index()
     {
-        $citas = Cita::All();
+        $citas = Cita::paginate(15);
         return view('citas.citasindex', compact('citas'));
     }
 

@@ -46,6 +46,7 @@ Route::put('paciente/{id}', ['as' => 'patient.update', 'uses' => 'PatientControl
 Route::get('expedient/{user_id}', ['as' => 'expedient.index', 'uses' => 'ExpedientController@index']);
 Route::get('expedient/create/{user_id}', ['as' => 'expedient.create', 'uses' => 'ExpedientController@create']);
 Route::post('expedient/', ['as' => 'expedient.store', 'uses' => 'ExpedientController@store']);
+Route::get('expedient/show/{id}', ['as' => 'expedient.show', 'uses' => 'ExpedientController@show']);
 //medicinas
 Route::get('medicina', ['as' => 'medicine.index', 'uses' => 'MedicineController@index']);
 Route::get('medicina/create', ['as' => 'medicine.create', 'uses' => 'MedicineController@create']);

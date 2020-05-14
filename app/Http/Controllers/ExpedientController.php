@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Expedient;
+use App\Medicine;
+use App\Patient;
 
 class ExpedientController extends Controller
 {
@@ -19,7 +21,7 @@ class ExpedientController extends Controller
      */
     public function index($user_id)
     {
-        $expedientes = Expedient::where(["user_id" => $user_id])->get();
+        $expedientes = Expedient::where(["user_id" => $user_id])->paginate(15);
         return view('expedients.index', compact('user_id', 'expedientes'));
     }
 
@@ -30,7 +32,8 @@ class ExpedientController extends Controller
      */
     public function create($id)
     {
-        return view('expedients.create', compact('id'));
+        $medicinas = Medicine::all();
+        return view('expedients.create', compact('id', 'medicinas'));
     }
 
     /**
@@ -49,9 +52,10 @@ class ExpedientController extends Controller
             'presion_s' => ['required', 'string', 'min:1', 'max:3'],
 
         ]);
+
         $fecha = Carbon::now();
         $hora = $fecha->hour . ":" . $fecha->minute;
-        Expedient::create([
+        $expedient = Expedient::create([
             'pulso' => $request['pulso'],
             'respiracion' => $request['respiracion'],
             'temperatura' => $request['temperatura'],
@@ -62,6 +66,9 @@ class ExpedientController extends Controller
             'date' => $fecha,
             'time' => $hora
         ]);
+        if ($request->medicinas) {
+            $expedient->medicines()->attach($request->medicinas);
+        }
 
         return redirect()->route('expedient.index', $request['patient_id']);
     }
@@ -74,7 +81,9 @@ class ExpedientController extends Controller
      */
     public function show($id)
     {
-        //
+
+        $expedient = Expedient::find($id);
+        return view('expedients.show', compact('expedient'));
     }
 
     /**

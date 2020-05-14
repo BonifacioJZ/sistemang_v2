@@ -5,15 +5,15 @@
 <div class="ui segment" >
     <div class="row-cols-md-6">
         <div>
-            <div class="btn-group" >
-                <a href="{{ route('expedient.create',$user_id) }}" class="btn btn-success">Crear Expediente</a>
+            <div>
+                <a href="{{ route('expedient.create',$user_id) }}" class="ui button green ">Crear Expediente</a>
             </div>
         </div>
     </div>
     <br>
 
     <div class="justify-content-center">
-      <table class="table">
+      <table class="ui table stackable">
         <thead>
             <tr>
               <th scope="col" >ID</th>
@@ -28,15 +28,15 @@
                 <td>{{ $expediente->date }}</td>
                 <td>{{ $expediente->time }}</td>
                 <td> <div class="btn-group" >
-                    <a href="#" class="btn btn-primary btn-sm">Ver Expediente</a>
-                    <a href="#" class="btn btn-warning btn-sm">Actualizar</a>
-                    <a href="#" class="btn btn-danger btn-sm">Eliminar</a>
+                    <a href="{{ route('expedient.show',$expediente->id) }}" class="ui button blue small">Ver Expediente</a>
+                    <a href="#" class="ui button yellow small">Actualizar</a>
+                    <a href="#" class="ui button red small">Eliminar</a>
                 </div></td>
             </tbody>
         @endforeach
 
       </table>
-
+      {{ $expedientes->links() }}
     </div>
     </div>
     </div>

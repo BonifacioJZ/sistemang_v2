@@ -4,36 +4,37 @@
     <div class="ui unstackable items">
       <div class="item">
         <div class="content">
-          <a class="header">Medicina {{  $medicina->nombre}}</a>
+          <a class="header">Expediente de la fecha {{$expedient->date}}  y hora  {{ $expedient->time }} </a>
           <div class="meta">
-            <span>Codigo</span>
+            <span>Pulso</span>
           </div>
           <div class="description">
-            <p> {{  $medicina->codigo }}</p>
+            <p> {{  __($expedient->pulso)  }}</p>
           </div>
           <div class="meta">
-            <span>Descripcion</span>
+            <span>Temperatura</span>
           </div>
           <div class="description">
-            <p> {{  $medicina->description }}</p>
+            <p> {{  __($expedient->temperatura)  }}</p>
           </div>
           <div class="meta">
-            <span>Laboratorio</span>
+            <span>Pesion</span>
           </div>
           <div class="description">
-            <p> {{  $medicina->laboratorio }}</p>
+            <p> {{  __($expedient->presion_d)  }}</p>
           </div>
           <div class="meta">
-                <span>Dosis</span>
-          </div>
-          <div class="description" >
-              <p>{{$medicina->dosis}}</p>
+            <span>presion</span>
           </div>
           <div class="description">
-            <a class="ui fluid yellow button" href="{{route('medicine.edit',$medicina->id)}}">Editar</a>
+            <p> {{  __($expedient->presion_s)  }}</p>
+          </div>
+          <div class="description">
+            <a class="ui fluid yellow button" href="#">Notas</a>
           </div>
         </div>
       </div>
     </div>
 </div>
+
 @endsection

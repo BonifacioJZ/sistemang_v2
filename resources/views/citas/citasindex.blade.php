@@ -45,6 +45,7 @@
                 @endforeach
             </tbody>
           </table>
+          {{ $citas->links() }}
 
     </div>
     </div>

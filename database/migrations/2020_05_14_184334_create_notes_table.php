@@ -20,7 +20,7 @@ class CreateNotesTable extends Migration
             $table->date('date');
             $table->time('hora');
             $table->foreignId('expedient_id')->constrained()->onDelete('cascade');
-            $table->integer('user_id')->nullable()->constrained()->onDelete('set null');
+            $table->foreignId('user_id')->nullable()->constrained()->onDelete('set null');
             $table->timestamps();
         });
     }

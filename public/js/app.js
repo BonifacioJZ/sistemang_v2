@@ -37054,6 +37054,10 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+$(document).ready(function () {
+  $('select.dropdown').dropdown();
+});
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":

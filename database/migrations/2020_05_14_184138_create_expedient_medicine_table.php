@@ -14,9 +14,8 @@ class CreateExpedientMedicineTable extends Migration
     public function up()
     {
         Schema::create('expedient_medicine', function (Blueprint $table) {
-            $table->integer('expedient_id')->unsigned();
-            $table->integer('medicine_id')->unsigned();
-            $table->timestamps();
+            $table->foreignId('expedient_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('medicine_id')->nullable()->constrained()->onDelete('cascade');
         });
     }
 

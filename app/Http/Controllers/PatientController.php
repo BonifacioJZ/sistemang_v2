@@ -19,7 +19,7 @@ class PatientController extends Controller
      */
     public function index()
     {
-        $pacientes = Patient::all();
+        $pacientes = Patient::paginate(15);
         return view('patients.index', compact('pacientes'));
     }
 
@@ -85,7 +85,7 @@ class PatientController extends Controller
     public function edit($id)
     {
         $paciente = Patient::find($id);
-        return view('patients.update',compact('paciente'));
+        return view('patients.update', compact('paciente'));
     }
 
     /**
@@ -116,8 +116,8 @@ class PatientController extends Controller
             'fecha_de_nacimiento' => $request['fecha_de_nacimiento'],
         ]);
 
-        $paciente=Patient::find($id);
-        return view('patients.update',compact('paciente'));
+        $paciente = Patient::find($id);
+        return view('patients.update', compact('paciente'));
     }
 
     /**

@@ -24,10 +24,10 @@ class Expedient extends Model
     //funciones
 
 
-   /* public function medicines()
+    public function medicines()
     {
         return $this->belongsToMany(Medicine::class);
-    } */
+    }
 
     public function patient()
     {

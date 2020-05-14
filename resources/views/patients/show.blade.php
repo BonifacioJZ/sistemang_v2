@@ -1,27 +1,45 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container-fluid ">
-        <div class="justify-content-center">
-            <div class="card text-center">
-              <div class="card-header">
-                  Paciente {{__($paciente->name)}} {{ __($paciente->last_name) }}
-              </div>
-            <div class="card-body">
-                <dl class="row" >
-                    <dt class="col-sm-3" >Fecha de Nacimiento</dt>
-                    <dd class="col-sm-9" >{{__($paciente->fecha_de_nacimiento)}}</dd>
-                    <dt class="col-sm-3" >Edad</dt>
-                    <dd class="col-sm-9">{{ __($edad) }}</dd>
-                    <dt class="col-sm-3">Telefono</dt>
-                    <dd class="col-sm-9" >{{__($paciente->telefono)}}</dd>
-                    <dt class="col-sm-3" >Curp</dt>
-                    <dd class="col-sm-9" >{{ __($paciente->curp) }}</dd>
-                    <dt class="col-sm-3"> Comunidad </dt>
-                    <dd class="col-sm-9">{{ $paciente->colonia }} {{ $paciente->ciudad }}</dd>
-                </dl>
-                <a href="{{ route('expedient.index',$paciente->id) }}" class="btn btn-primary">Expedientes</a>
-            </div>
+<div class="ui segment">
+    <div class="ui unstackable items">
+      <div class="item">
+        <div class="content">
+          <a class="header">Paciente {{ __($paciente->name) }} {{ __($paciente->last_name) }} </a>
+          <div class="meta">
+            <span>Fecha de Nacimiento</span>
+          </div>
+          <div class="description">
+            <p> {{  __($paciente->fecha_de_nacimiento) }}</p>
+          </div>
+          <div class="meta">
+            <span>Edad</span>
+          </div>
+          <div class="description">
+            <p> {{  __($edad) }}</p>
+          </div>
+          <div class="meta">
+            <span>Telefono</span>
+          </div>
+          <div class="description">
+            <p> {{  __($paciente->telefono) }}</p>
+          </div>
+          <div class="meta">
+                <span>Curp</span>
+          </div>
+          <div class="description" >
+              <p>{{__($paciente->curp)}}</p>
+          </div>
+          <div class="meta">
+            <span>Comunidad</span>
+          </div>
+          <div class="description" >
+            <p>{{__($paciente->colonia)}} {{ __($paciente->ciudad) }}</p>
+          </div>
+          <div class="description">
+            <a class="ui fluid green button" href="{{route('expedient.index',$paciente->id)}}">Expedientes</a>
+          </div>
         </div>
-        </div>
+      </div>
     </div>
+  </div>
 @endsection
