@@ -13,7 +13,7 @@
     <br>
 
     <div class="justify-content-center">
-      <table class="ui table stackable">
+      <table class="ui celled table">
         <thead>
             <tr>
               <th scope="col" >ID</th>
@@ -27,10 +27,10 @@
                 <td>{{ $expediente->id }}</td>
                 <td>{{ $expediente->date }}</td>
                 <td>{{ $expediente->time }}</td>
-                <td> <div class="btn-group" >
-                    <a href="{{ route('expedient.show',$expediente->id) }}" class="ui button blue small">Ver Expediente</a>
-                    <a href="#" class="ui button yellow small">Actualizar</a>
-                    <a href="#" class="ui button red small">Eliminar</a>
+                <td> <div class="ui buttons vertical " >
+                    <a href="{{ route('expedient.show',$expediente->id) }}" class=" mini ui button blue ">Ver Expediente</a>
+                    <a href="#" class="mini ui button yellow ">Actualizar</a>
+                    <a href="#" class="mini ui button red">Eliminar</a>
                 </div></td>
             </tbody>
         @endforeach

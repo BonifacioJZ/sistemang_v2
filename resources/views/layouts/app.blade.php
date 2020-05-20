@@ -31,7 +31,7 @@
 
     <style>
       body {
-            background-color: #DADADA;
+            background-color: #f5f5ea;
         }
         segment{
             background-color:#DADADA;
