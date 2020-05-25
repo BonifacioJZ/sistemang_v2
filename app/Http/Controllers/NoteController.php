@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Note;
+use Carbon\Carbon;
 
 class NoteController extends Controller
 {
@@ -11,9 +13,10 @@ class NoteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+        $notes = Note::where(['expedient_id' => $id])->paginate(15);
+        return view('notes.index', compact('id', 'notes'));
     }
 
     /**
@@ -21,9 +24,9 @@ class NoteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        return view('notes.create', compact('id'));
     }
 
     /**
@@ -34,7 +37,23 @@ class NoteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'titulo' => ['required', 'string', 'min:1', 'max:100'],
+            'nota' => ['required', 'string', 'min:1', 'max:100000'],
+        ]);
+        $fecha = Carbon::now('America/Mexico_City');
+        $hora = $fecha->hour . ":" . $fecha->minute;
+        Note::create(
+            [
+                'titulo' => $request['titulo'],
+                'nota' => $request['nota'],
+                'expedient_id' => $request['expedient'],
+                'user_id' => $request['id'],
+                'date' => $fecha,
+                'hora' => $hora
+            ]
+        );
+        return redirect()->route('note.index', $request['expedient']);
     }
 
     /**
@@ -45,7 +64,8 @@ class NoteController extends Controller
      */
     public function show($id)
     {
-        //
+        $note = Note::find($id);
+        return view('notes.show', compact('note'));
     }
 
     /**

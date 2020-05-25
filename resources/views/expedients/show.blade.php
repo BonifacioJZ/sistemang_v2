@@ -111,7 +111,7 @@
           </div><br><br>
 
           <div class="description">
-            <a class="ui fluid yellow button" href="#">Notas</a>
+            <a class="ui fluid yellow button" href="{{ route('note.index',$expedient->id)}}">Notas</a>
           </div>
         </div>
       </div>

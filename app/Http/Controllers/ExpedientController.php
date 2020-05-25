@@ -53,7 +53,7 @@ class ExpedientController extends Controller
 
         ]);
 
-        $fecha = Carbon::now();
+        $fecha = Carbon::now('America/Mexico_City');
         $hora = $fecha->hour . ":" . $fecha->minute;
         $expedient = Expedient::create([
             'pulso' => $request['pulso'],
