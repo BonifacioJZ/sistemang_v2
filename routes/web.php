@@ -61,6 +61,10 @@ Route::get('expedient/notes/{expedient}', ['as' => 'note.index', 'uses' => 'Note
 Route::get('expedient/note/create/{expedient}', ['as' => 'note.create', 'uses' => 'NoteController@create']);
 Route::post('expedient/note', ['as' => 'note.store', 'uses' => 'NoteController@store']);
 Route::get('expedient/note/show/{id}', ['as' => 'note.show', 'uses' => 'NoteController@show']);
+Route::get('expedient/note/edit/{id}', ['as' => 'note.edit', 'uses' => 'NoteController@edit']);
+Route::put('expedient/note/{id}', ['as' => 'note.update', 'uses' => 'NoteController@update']);
+Route::delete('expedient/note/{id}', ['as' => 'note.destroy', 'uses' => 'NoteController@destroy']);
+
 Auth::routes();
 
 Route::get('/home', ['as' => 'home', 'uses' => 'ListController@index']);

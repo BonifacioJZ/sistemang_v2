@@ -12,7 +12,11 @@
             <p> {{  $note->nota }}</p>
           </div>
           <div class="description">
-            <a class="ui fluid red button" href="#">Eliminar</a>
+            <form method="POST" action="{{ route('note.destroy',$note->id) }}">
+                @csrf
+                @method('delete')
+                <button type="submit" class="ui red fluid button">Eliminar</button>
+            </form>
           </div>
       </div>
     </div>

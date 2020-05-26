@@ -29,7 +29,7 @@
                 <td>{{ $note->hora }}</td>
                 <td> <div class="ui buttons vertical " >
                     <a href="{{ route('note.show',$note->id) }}" class=" mini ui button blue ">Ver Expediente</a>
-                    <a href="#" class="mini ui button yellow ">Actualizar</a>
+                    <a href="{{ route('note.edit',$note->id,$id) }}" class="mini ui button yellow ">Actualizar</a>
                 </div></td>
             </tbody>
         @endforeach

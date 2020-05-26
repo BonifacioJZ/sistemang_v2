@@ -76,7 +76,8 @@ class NoteController extends Controller
      */
     public function edit($id)
     {
-        //
+        $note = Note::find($id);
+        return view('notes.update', compact('note'));
     }
 
     /**
@@ -88,8 +89,22 @@ class NoteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'titulo' => ['required', 'string', 'min:1', 'max:100'],
+            'nota' => ['required', 'string', 'min:1', 'max:100000'],
+        ]);
+
+        Note::findOrFail($id)->update([
+            'titulo' => $request['titulo'],
+            'nota' => $request['nota'],
+            'expedient_id' => $request['expedient'],
+            'user_id' => $request['id']
+        ]);
+        return redirect()->route('note.show', $id);
     }
+
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -99,6 +114,9 @@ class NoteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $note = Note::find($id);
+        $expedient = $note['expedient_id'];
+        Note::findOrFail($id)->delete();
+        return redirect()->route('note.index', $expedient);
     }
 }
