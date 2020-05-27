@@ -14,7 +14,7 @@ class MedicineController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth', 'roles:super,medic,nurse,secretary']);
+        $this->middleware(['auth', 'roles:super,admin,doctor,nurse,secretary']);
     }
     /**
      * Display a listing of the resource.

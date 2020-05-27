@@ -12,7 +12,7 @@ class ExpedientController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth', 'roles:super,admin,doctor,nurse']);
     }
     /**
      * Display a listing of the resource.

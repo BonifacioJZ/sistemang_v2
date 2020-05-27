@@ -15,7 +15,7 @@ class ListController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth', 'roles:super,admin,doctor,nurse,secretary']);
     }
     public function index()
     {
