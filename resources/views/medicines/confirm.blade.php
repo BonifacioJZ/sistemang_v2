@@ -12,7 +12,7 @@
                     <div class="ui buttons">
                         <a href="{{ route('medicine.index') }}" class="ui positive button">No</a>
                         <div class="or" data-text="o"></div>
-                        <form method="POST" action="{{ route('note.destroy',$id) }}">
+                        <form method="POST" action="{{ route('medicine.destroy',$id) }}">
                             @csrf
                             @method('delete')
                             <button type="submit" class="ui red button">Si</button>

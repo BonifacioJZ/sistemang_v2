@@ -37,8 +37,10 @@
                 <th>
                     <div class="ui buttons">
                         <a href="{{ route('medicine.show',$medicina->id) }}" class="ui positive button">Ver Medicina</a>
+                        @if(auth()->user()->hasRole(['super','admin','nurse']))
                         <div class="or" data-text="o"></div>
                         <a href="{{ route('medicine.confirm',$medicina->id) }}" class="ui red button">Eliminar</a>
+                        @endif
                       </div>
                 </th>
             </tr>

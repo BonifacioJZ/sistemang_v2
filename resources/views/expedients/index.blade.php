@@ -30,7 +30,9 @@
                 <td> <div class="ui buttons vertical " >
                     <a href="{{ route('expedient.show',$expediente->id) }}" class=" mini ui button blue ">Ver Expediente</a>
                     <a href="#" class="mini ui button yellow ">Actualizar</a>
-                    <a href="#" class="mini ui button red">Eliminar</a>
+                    @if(auth()->user()->hasRole(['super','admin']))
+                        <a href="#" class="mini ui button red">Eliminar</a>
+                    @endif
                 </div></td>
             </tbody>
         @endforeach

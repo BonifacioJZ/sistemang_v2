@@ -26,7 +26,7 @@ class Expedient extends Model
 
     public function medicines()
     {
-        return $this->belongsToMany(Medicine::class);
+        return $this->belongsToMany(Medicine::class)->withTimestamps();;
     }
 
     public function patient()

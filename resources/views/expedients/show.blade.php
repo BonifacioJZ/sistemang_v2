@@ -116,6 +116,25 @@
         </div>
       </div>
     </div>
+    <table class="ui celled table">
+        <thead>
+          <tr>
+          <th>Nombre</th>
+          <th>Codigo</th>
+          <th>Ver</th>
+        </tr>
+    </thead>
+        <tbody>
+         @foreach($expedient->medicines as $medicine)
+             <tr>
+                 <td>{{ __($medicine->nombre) }}</td>
+                 <td>{{ __($medicine->codigo) }}</td>
+                 <td><a href="{{ route('medicine.show',$medicine->id) }}" class="ui positive button">Ver Medicina</a></td>
+
+             </tr>
+         @endforeach
+        </tbody>
+      </table>
 </div>
 
 @endsection

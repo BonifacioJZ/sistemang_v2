@@ -7,9 +7,14 @@ use App\Medicine;
 
 class MedicineController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth', 'roles:super,medic,nurse,secretary']);
     }
     /**
      * Display a listing of the resource.

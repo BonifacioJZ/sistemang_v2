@@ -62,11 +62,21 @@
             </a>
             @endguest
             @auth
+
                 <a class="item {{ setActive('home') }}" href="{{ route('home') }}">Inicio</a>
                 <a class="item {{ setActive('cita.index') }}" href="{{ route('cita.index') }}">Cita</a>
+                @if(auth()->user()->hasRole(['super','nurse','secretary','doctor','admin']))
                 <a class="item {{ setActive('medicine.index') }}" href="{{ route('medicine.index') }}">Medicina</a>
+                @endif
+                @if(auth()->user()->hasRole(['super','nurse','admin','doctor']))
                 <a class="item {{ setActive('patient.index') }}" href="{{ route('patient.index') }}">Paciente</a>
+                @endif
                 <div class="right menu">
+                    @if(auth()->user()->hasRole(['super','secretary','admin']))
+                        <a class="item {{ setActive('register') }}" href="{{ route('register') }}">
+                            Registro
+                        </a>
+                    @endif
                     <a class="ui item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         {{ __('Salir') }}
                     </a>
@@ -80,7 +90,7 @@
         </div>
         <main class="py-4 ui container">
                 @yield('content')
-            
+
         </main>
     </div>
 </body>

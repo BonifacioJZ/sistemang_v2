@@ -32,6 +32,41 @@
                         <input type="text" name="email" value="{{ old('email') }}" placeholder="Correo Electronico">
                     </div>
                 </div>
+                <div class="field @error('role') error @enderror">
+                    <label>{{ __('Selecione un Rol') }}</label>
+                    @if(auth()->user()->hasRole(['super']))
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="role" id="exampleRadios1" value="1">
+                        <label class="form-check-label" for="exampleRadios1">
+                          Super Ususario
+                        </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="role" id="exampleRadios2" value="2">
+                        <label class="form-check-label" for="exampleRadios2">
+                          Administrador
+                        </label>
+                      </div>
+                    @endif
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="role" id="exampleRadios3" value="3">
+                        <label class="form-check-label" for="exampleRadios2">
+                          Doctor
+                        </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="role" id="exampleRadios3" value="4">
+                        <label class="form-check-label" for="exampleRadios2">
+                          Enfermera
+                        </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="role" id="exampleRadios3" value="5">
+                        <label class="form-check-label" for="exampleRadios2">
+                          Secretaria
+                        </label>
+                      </div>
+                </div>
                 <div class="field @error('password') error @enderror">
                     <label>{{ __('Contraseña') }}</label>
                     <div class="ui left icon input">
@@ -46,7 +81,8 @@
                     </div>
 
                 </div>
-                <button class="ui fluid large submit primary button" type="submit">Inicio de Sesion</button>
+                
+                <button class="ui fluid large submit primary button" type="submit">Registrar</button>
             </div>
             <div class="ui error message">
                 <ul class="list">
